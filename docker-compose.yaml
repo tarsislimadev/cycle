@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  app:
+    build: './src/app'
+    volumes:
+      - './src/app:/app'
+
+  release:
+    image: release
+    build: './src'
+
