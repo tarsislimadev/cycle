@@ -1,0 +1,25 @@
+name: GitHub release
+
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+
+jobs:
+  artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+
+      - name: Build app
+        run: docker-compose build release
+
+      - name: Export app
+        run: docker run -v $(pwd)/dist:/dist -w /dist release cp /usr/src/app/main /dist -rfv 
+
+      - name: Create release
+        run: gh release create v$( date +%Y%m%d%H%M ) ./dist/main
+        env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
