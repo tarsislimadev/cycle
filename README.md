@@ -1,1 +1,5 @@
-# cycle
+# Cycle
+
+## License
+
+[MIT](./LICENSE)
