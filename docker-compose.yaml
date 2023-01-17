@@ -6,6 +6,8 @@ services:
     build: './src/app'
     volumes:
       - './src/app:/app'
+    ports:
+      - '80:80'
 
   release:
     image: release
