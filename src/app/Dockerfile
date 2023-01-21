@@ -6,4 +6,8 @@ WORKDIR /usr/src/app
 
 COPY . .
 
+RUN go mod init github.com/brtmvdl/cycle
+
+RUN go mod tidy
+
 CMD go run main.go
