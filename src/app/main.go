@@ -16,16 +16,16 @@ func main() {
 	port := os.Getenv("PORT")
 
 	ln, err := net.Listen("tcp", ":" + port)
-	panicError(err)
+	logPanic(err)
 
 	for {
 		conn, err := ln.Accept()
-		panicError(err)
+		logPanic(err)
 		go handle(conn)
 	}
 }
 
-func panicError(err error) {
+func logPanic(err error) {
 	if err != nil {
 		log.Panic(err)
 	}
